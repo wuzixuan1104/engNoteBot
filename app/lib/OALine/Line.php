@@ -256,7 +256,7 @@ abstract class Event {
       return $events;
 
     $body = file_get_contents("php://input");
-    // \Log::info($body);
+    \Log::info($body);
 
     if (ENVIRONMENT !== 'development' && !hash_equals(base64_encode(hash_hmac('sha256', $body, config('line', 'channel', 'secret'), true)), $_SERVER['HTTP_X_LINE_SIGNATURE']))
       return $events;
