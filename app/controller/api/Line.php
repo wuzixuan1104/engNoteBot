@@ -47,6 +47,6 @@ class Line extends ApiController {
       }
     }
     
-    return false;
+    return true;
   }
 }
