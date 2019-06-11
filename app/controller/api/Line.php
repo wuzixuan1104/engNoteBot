@@ -11,11 +11,11 @@ class Line extends ApiController {
 
   public function index() {
     foreach (Event::all() as $event) {
-      Log::info(123);
       if (!$source = \M\LineSource::oneByEvent($event))
         continue;
       
       $speaker = \M\LineSource::speakerByEvent($event);
+      Log::info($speaker);
       if (!$logModel = $source->getLogModelByEvent($speaker, $event))
         continue;
 
