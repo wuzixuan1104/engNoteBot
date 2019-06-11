@@ -2,4 +2,5 @@
 
 Router::dir('api', function() {
   Router::post('line')->controller('Line@index');
+  Router::get('line')->controller('Line@index');
 });
