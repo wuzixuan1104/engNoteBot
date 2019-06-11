@@ -58,7 +58,6 @@ class LineSource extends Model {
       'sid' => $userId,
       'title' => '',
       'type' => self::TYPE_USER,
-      'lineRichmenuId' => 0
     ];
 
     if (!$speaker = LineSource::one('sid = ?', $params['sid'])) {
@@ -69,11 +68,9 @@ class LineSource extends Model {
       if (!$trans)
         return null;
 
-    } elseif ($speaker->token) {
-      $speaker->updateRichmenu();      
-    }
+    } 
     
-    $speaker->updateTitle();
+    // $speaker->updateTitle();
 
     return $speaker;
   }
