@@ -11,6 +11,7 @@ class Line extends ApiController {
 
   public function index() {
     foreach (Event::all() as $event) {
+      Log::info($event);
       if (!$source = \M\LineSource::oneByEvent($event))
         continue;
       
