@@ -49,9 +49,9 @@ class Bot {
   public function pushMessage($to, Message $message) {
     $messages = $message->buildMessage();
     
-    // if(ENVIRONMENT === 'development') {
-    //   die (json_encode($message->buildMessage()));
-    // }
+    if(ENVIRONMENT === 'development') {
+      die (json_encode($message->buildMessage()));
+    }
 
     return $messages ? $this->curl->post($this->endpointBase . '/v2/bot/message/push', [
       'to' => $to,

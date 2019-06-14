@@ -5,7 +5,7 @@ use \OA\Line\Curl as Curl;
 use \OA\Line\Message as Message;
 
 Load::lib('OALine/Line.php');
-Load::lib('line/Menu.php');
+Load::lib('Menu.php');
 
 class Line extends ApiController {
 
@@ -26,6 +26,12 @@ class Line extends ApiController {
           if ($isSys = $logModel->checkSysTxt())
             continue;
 
+          if (!preg_match('/^@\s*([a-zA-Z])\s*[\(|\（](.*)[\)|\）]\s*(.*)$/u', $logModel->text, $match))
+            continue;
+
+          if ($msg = $logModel->checkType($match))
+            $msg->pushTo($speaker);
+          
           break;
 
         case 'M\LinePostback':

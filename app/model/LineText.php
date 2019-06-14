@@ -4,6 +4,11 @@ namespace M;
 
 defined('MAPLE') || exit('此檔案不允許讀取！');
 
+use \OA\Line\Message;
+
+\Load::lib('Menu.php');
+\Load::lib('OALine/Line.php');
+
 class LineText extends Model {
   // static $hasOne = [];
 
@@ -15,8 +20,8 @@ class LineText extends Model {
 
   // static $uploaders = [];
 
+  const MATCH_TYPE = ['w', 'p', 's'];
   const SYSTEM_TEXT = [
-    '訊息已成功寄出！請稍候客服會盡快回覆您：）',
     '已點擊「',
   ];
 
@@ -26,5 +31,38 @@ class LineText extends Model {
         return true;
     }
     return false;
+  }
+
+  public function checkType($match) {
+    if (!(in_array($match[1], self::MATCH_TYPE) && $match[2]))
+      return false;
+
+    $params = [
+      'en' => $match[2],
+      'ch' => $match[3],
+    ];
+
+    switch($match[1]) {
+      case 'w':
+        if ($obj = \M\Word::one('en = ?', $match[2]))
+          return \Menu::existsCard($obj);
+        if (!$obj = \M\Word::create($params))
+          return false;
+        break;
+      case 'p':
+        if ($obj = \M\Phrase::one('en = ?', $match[2]))
+          return \Menu::existsCard($obj);
+        if (!$obj = \M\Phrase::create($params))
+          return false;
+        break;
+      case 's':
+        if ($obj = \M\Sentence::one('en = ?', $match[2]))
+          return \Menu::existsCard($obj);
+        if (!$obj = \M\Sentence::create($params))
+          return false;
+        break;
+    }
+
+    return Message::text()->text('已經成功輸入摟！');
   }
 }
