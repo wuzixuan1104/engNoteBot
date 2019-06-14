@@ -15,7 +15,6 @@ class Line extends ApiController {
         continue;
       
       $speaker = \M\LineSource::speakerByEvent($event);
-      Log::info($speaker);
       if (!$logModel = $source->getLogModelByEvent($speaker, $event))
         continue;
 
@@ -25,7 +24,7 @@ class Line extends ApiController {
         case 'M\LineText':
           if ($isSys = $logModel->checkSysTxt())
             continue;
-
+          
           if (!preg_match('/^@\s*([a-zA-Z])\s*[\(|\（](.*)[\)|\）]\s*(.*)$/u', $logModel->text, $match))
             continue;
 
