@@ -44,25 +44,32 @@ class LineText extends Model {
 
     switch($match[1]) {
       case 'w':
-        if ($obj = \M\Word::one('en = ?', $match[2]))
-          return \Menu::existsCard($obj);
-        if (!$obj = \M\Word::create($params))
+        if ($obj = \M\Word::one('en = ?', $match[2])) {
+          if ($obj->ch != $match[3] && ($obj->ch = $match[3]))
+            $obj->save();
+        } elseif (!$obj = \M\Word::create($params)) {
           return false;
+        }
+
         break;
       case 'p':
-        if ($obj = \M\Phrase::one('en = ?', $match[2]))
-          return \Menu::existsCard($obj);
-        if (!$obj = \M\Phrase::create($params))
+        if ($obj = \M\Phrase::one('en = ?', $match[2])) {
+          if ($obj->ch != $match[3] && ($obj->ch = $match[3]))
+            $obj->save();
+        } elseif (!$obj = \M\Phrase::create($params)) {
           return false;
+        }
         break;
       case 's':
-        if ($obj = \M\Sentence::one('en = ?', $match[2]))
-          return \Menu::existsCard($obj);
-        if (!$obj = \M\Sentence::create($params))
+        if ($obj = \M\Sentence::one('en = ?', $match[2])) {
+          if ($obj->ch != $match[3] && ($obj->ch = $match[3]))
+            $obj->save();
+        } elseif (!$obj = \M\Sentence::create($params)) {
           return false;
+        }
         break;
     }
 
-    return Message::text()->text('已經成功輸入摟！');
+    return \Menu::existsCard($obj);
   }
 }
