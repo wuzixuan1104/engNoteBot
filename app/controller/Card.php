@@ -35,6 +35,7 @@ class Card extends Controller {
       Validator::need($params, 'en', '英文')->isText();
       Validator::need($params, 'ch', '中文')->isText();
 
+      $params['model'] = urldecode($params['model']);
       if (!$obj = $params['model']::one('id = ?', $params['id']))
         error('找不到此卡片資料');
     });
