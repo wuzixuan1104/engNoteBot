@@ -9,16 +9,9 @@ class Card extends Controller {
   public function edit() {
     $params = Input::get();
 
-    // $params['model'] = 'M\Word';
-    // $params['en'] = '12323';
-    // $params['ch'] = '5';
-    
-
     validator(function() use (&$params, &$obj) {
       Validator::need($params, 'id', 'ID')->isVarchar(190);
       Validator::need($params, 'model', 'Model')->isVarchar(190);
-      Validator::need($params, 'en', '英文')->isText();
-      Validator::need($params, 'ch', '中文')->isText();
 
       $params['model'] = urldecode($params['model']);
       if (!$obj = $params['model']::one('id = ?', $params['id']))
