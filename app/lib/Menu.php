@@ -6,7 +6,7 @@ Load::lib('OALine/Line.php');
 
 class Menu {
   public static function existsCard($obj) {
-    $url = 'line://app/1585633080-5bbyNbWM?id=5&model=M%5CWord&en=hello&ch=哈囉';
+    $url = 'line://app/1585633080-5bbyNbWM?id=5';
 
     // Log::info('line://app/1585633080-5bbyNbWM?id=' . $obj->id . '&model=' . urlencode(get_class($obj)) . '&en=' . $obj->en . '&ch=' . $obj->ch);
     

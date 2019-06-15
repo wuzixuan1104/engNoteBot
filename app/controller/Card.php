@@ -9,6 +9,12 @@ class Card extends Controller {
   public function edit() {
     $params = Input::get();
 
+    $params['id'] = 5;
+    $params['model'] = 5;
+    $params['en'] = 5;
+    $params['ch'] = 5;
+    
+
     validator(function() use (&$params) {
       Validator::need($params, 'id', 'ID')->isVarchar(190);
       Validator::need($params, 'model', 'Model')->isVarchar(190);
