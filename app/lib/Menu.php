@@ -6,6 +6,7 @@ Load::lib('OALine/Line.php');
 
 class Menu {
   public static function existsCard($obj) {
+    Log::info(get_class($obj));
     return Msg::flex()->altText('學習卡片')->template( Msg\FlexTemplate::bubble([
       'body' => Msg\FlexBox::create([
         Msg\FlexText::create('Ennote 學英文')->setWeight('bold')->setColor('#47b0f5')->setSize('xs'),
