@@ -6,17 +6,12 @@ Load::lib('OALine/Line.php');
 
 class Menu {
   public static function existsCard($obj) {
-
     return Msg::flex()->altText('學習卡片')->template( Msg\FlexTemplate::bubble([
       'body' => Msg\FlexBox::create([
         Msg\FlexText::create('Ennote 學英文')->setWeight('bold')->setColor('#47b0f5')->setSize('xs'),
-
         Msg\FlexText::create($obj->en)->setWeight('bold')->setSize('md')->setWrap(true)->setMargin('lg'),
-
         Msg\FlexText::create($obj->ch)->setColor('#737373')->setSize('sm')->setWrap(true)->setMargin('lg'),
-        
-        Msg\FlexText::create($obj->updateAt)->setColor('#cecece')->setSize('xxs')->setMargin('lg')->setAlign('end'),
-        
+        Msg\FlexText::create($obj->updateAt->format('Y-m-d H:i:s'))->setColor('#cecece')->setSize('xxs')->setMargin('lg')->setAlign('end'),
         Msg\FlexSeparator::create()->setMargin('sm'),
 
         Msg\FlexBox::create([
