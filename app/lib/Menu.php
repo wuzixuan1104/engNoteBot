@@ -6,7 +6,9 @@ Load::lib('OALine/Line.php');
 
 class Menu {
   public static function existsCard($obj) {
-    Log::info('line://app/1585633080-5bbyNbWM?id=' . $obj->id . '&model=' . get_class($obj) . '&en=' . $obj->en . '&ch=' . $obj->ch);
+    Log::info('test');
+    Log::info('line://app/1585633080-5bbyNbWM?id=' . $obj->id . '&model=' . urlencode(get_class($obj)) . '&en=' . $obj->en . '&ch=' . $obj->ch);
+    
     return Msg::flex()->altText('學習卡片')->template( Msg\FlexTemplate::bubble([
       'body' => Msg\FlexBox::create([
         Msg\FlexText::create('Ennote 學英文')->setWeight('bold')->setColor('#47b0f5')->setSize('xs'),
@@ -17,7 +19,7 @@ class Menu {
 
         Msg\FlexBox::create([
           Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#d6d6d6')->setAction(Msg\FlexAction::postback('刪除', ['cardDelete', get_class($obj), $obj->id], '已點擊「 刪除 」')),
-          Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#e45a5a')->setAction(Msg\FlexAction::uri('編輯', 'line://app/1585633080-5bbyNbWM?id=' . $obj->id . '&model=' . urlencode(get_class($obj)) . '&en=' . $obj->en . '&ch=' . $obj->ch)),
+          Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#e45a5a')->setAction(Msg\FlexAction::uri('編輯', 'line://app/1585633080-5bbyNbWM?id=3&model=M%5CWord&en=book&ch=書')),
         ])->setLayout('horizontal')->setMargin('lg')->setSpacing('lg'),
 
       ])->setLayout('vertical')])
