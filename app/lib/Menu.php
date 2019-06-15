@@ -1,4 +1,4 @@
-<?php
+<?php defined('MAPLE') || exit('此檔案不允許讀取！');
 
 use OA\Line\Message as Msg;
 
@@ -16,7 +16,7 @@ class Menu {
 
         Msg\FlexBox::create([
           Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#d6d6d6')->setAction(Msg\FlexAction::postback('刪除', ['cardDelete', get_class($obj), $obj->id], '已點擊「 刪除 」')),
-          Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#e45a5a')->setAction(Msg\FlexAction::postback('編輯', ['cardEdit', get_class($obj), $obj->id], '已點擊「 編輯 」')),
+          Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#e45a5a')->setAction(Msg\FlexAction::uri('編輯', 'https://ennote.shari.tw/card/edit')),
         ])->setLayout('horizontal')->setMargin('lg')->setSpacing('lg'),
 
       ])->setLayout('vertical')])

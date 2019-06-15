@@ -35,7 +35,7 @@ class Line extends ApiController {
           break;
 
         case 'M\LinePostback':
-          Load::lib('line/Postback.php');
+          Load::lib('Postback.php');
 
           $params = $logModel->data();
           $method = array_shift($params);
