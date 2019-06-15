@@ -6,6 +6,7 @@ Load::lib('OALine/Line.php');
 
 class Menu {
   public static function existsCard($obj) {
+    Log::info('line://app/1585633080-5bbyNbWM?id=' . $obj->id . '&model=' . get_class($obj) . '&en=' . $obj->en . '&ch=' . $obj->ch);
     return Msg::flex()->altText('學習卡片')->template( Msg\FlexTemplate::bubble([
       'body' => Msg\FlexBox::create([
         Msg\FlexText::create('Ennote 學英文')->setWeight('bold')->setColor('#47b0f5')->setSize('xs'),
