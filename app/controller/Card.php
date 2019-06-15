@@ -9,9 +9,9 @@ class Card extends Controller {
   public function edit() {
     $params = Input::get();
 
-    $params['model'] = 'M\Word';
-    $params['en'] = '12323';
-    $params['ch'] = '5';
+    // $params['model'] = 'M\Word';
+    // $params['en'] = '12323';
+    // $params['ch'] = '5';
     
 
     validator(function() use (&$params) {
@@ -19,6 +19,10 @@ class Card extends Controller {
       Validator::need($params, 'model', 'Model')->isVarchar(190);
       Validator::need($params, 'en', '英文')->isText();
       Validator::need($params, 'ch', '中文')->isText();
+
+      $params['en'] = urldecode($params['en']);
+      $params['ch'] = urldecode($params['ch']);
+      $params['model'] = urldecode($params['model']);
     });
 
     $asset = Asset::create()
@@ -40,7 +44,6 @@ class Card extends Controller {
       Validator::need($params, 'en', '英文')->isText();
       Validator::need($params, 'ch', '中文')->isText();
 
-      $params['model'] = urldecode($params['model']);
       if (!$obj = $params['model']::one('id = ?', $params['id']))
         error('找不到此卡片資料');
     });

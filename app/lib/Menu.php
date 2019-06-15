@@ -6,9 +6,9 @@ Load::lib('OALine/Line.php');
 
 class Menu {
   public static function existsCard($obj) {
-    $url = 'line://app/1585633080-5bbyNbWM?id=5';
+    // $url = 'line://app/1585633080-5bbyNbWM?id=5&';
 
-    // Log::info('line://app/1585633080-5bbyNbWM?id=' . $obj->id . '&model=' . urlencode(get_class($obj)) . '&en=' . $obj->en . '&ch=' . $obj->ch);
+    $url = 'line://app/1585633080-5bbyNbWM?id=' . $obj->id . '&model=' . urlencode(get_class($obj)) . '&en=' . urlencode($obj->en) . '&ch=' . urlencode($obj->ch);
     
     return Msg::flex()->altText('學習卡片')->template( Msg\FlexTemplate::bubble([
       'body' => Msg\FlexBox::create([
