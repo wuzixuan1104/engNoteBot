@@ -9,10 +9,9 @@ class Card extends Controller {
   public function edit() {
     $params = Input::get();
 
-    $params['id'] = 5;
-    $params['model'] = 5;
-    $params['en'] = 5;
-    $params['ch'] = 5;
+    $params['model'] = 'M\Word';
+    $params['en'] = '12323';
+    $params['ch'] = '5';
     
 
     validator(function() use (&$params) {
