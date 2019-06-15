@@ -11,15 +11,15 @@
 </head>
 <body>
   <form class="login_form">
-    <div class="content en" contenteditable="true" placeholder="請輸入英文"></div>
-    <div class="content ch" contenteditable="true" placeholder="請輸入中文"></div>
+    <div class="content en" contenteditable="true" placeholder="請輸入英文" required><?php echo $params['en']; ?></div>
+    <div class="content ch" contenteditable="true" placeholder="請輸入中文"><?php echo $params['ch']; ?></div>
     
+    <input type="hidden" name="id" value="<?php echo $params['id']; ?>">
+    <input type="hidden" name="model" value="<?php echo $params['model']; ?>">
+  
     <input id="send" type="button" value="送出">
-    <input id="sid" type="hidden" name="sid" value="">
   </form>
 
   <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
-  <script src="https://crm-bot-test.tripresso.com.tw/asset/js/site/Liff/index.js?v=11" language="javascript" type="text/javascript" ></script>
-  <!-- <script src="http://dev.crm.bot/asset/js/site/Liff/index.js" language="javascript" type="text/javascript" ></script> -->
 </body>
 </html>
