@@ -22,10 +22,11 @@ class Line extends ApiController {
 
       switch ($logClass) {
         case 'M\LineText':
+
           if ($isSys = $logModel->checkSysTxt())
             continue;
           
-          if (!preg_match('/^@\s*([a-zA-Z])\s*[\(|\（](.*)[\)|\）]\s*(.*)$/u', $logModel->text, $match))
+          if (!preg_match('/^[@|＠]\s*([a-zA-Z])\s*[\(|\（](.*)[\)|\）]\s*(.*)$/u', $logModel->text, $match))
             continue;
 
           if ($msg = $logModel->checkType($match))
