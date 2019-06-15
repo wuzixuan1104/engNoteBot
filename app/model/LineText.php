@@ -36,15 +36,14 @@ class LineText extends Model {
   public function checkType($match) {
     if (!(in_array($match[1], self::MATCH_TYPE) && $match[2]))
       return false;
-    \Log::info(1);
+
     $params = [
       'en' => $match[2],
       'ch' => $match[3],
     ];
-    \Log::info(2);
+    
     switch($match[1]) {
       case 'w':
-        \Log::info(3);
         if ($obj = \M\Word::one('en = ?', $match[2])) {
           if ($obj->ch != $match[3] && ($obj->ch = $match[3]))
             $obj->save();

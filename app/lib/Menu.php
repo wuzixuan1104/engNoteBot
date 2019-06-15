@@ -16,8 +16,8 @@ class Menu {
         Msg\FlexSeparator::create()->setMargin('sm'),
 
         Msg\FlexBox::create([
-          Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#d6d6d6')->setAction(Msg\FlexAction::postback('刪除', ['cardDelete', get_class($obj), $obj->id], '已點擊「 刪除 」')),
-          Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#e45a5a')->setAction(Msg\FlexAction::postback('編輯', ['cardEdit', get_class($obj), $obj->id], '已點擊「 編輯 」')),
+          Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#d6d6d6')->setAction(Msg\FlexAction::postback('刪除', ['cardDelete', 123, $obj->id], '已點擊「 刪除 」')),
+          Msg\FlexButton::create('primary')->setHeight('sm')->setColor('#e45a5a')->setAction(Msg\FlexAction::postback('編輯', ['cardEdit', 123, $obj->id], '已點擊「 編輯 」')),
         ])->setLayout('horizontal')->setMargin('lg')->setSpacing('lg'),
 
       ])->setLayout('vertical')])
