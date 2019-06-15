@@ -14,15 +14,18 @@ class Card extends Controller {
     // $params['ch'] = '5';
     
 
-    validator(function() use (&$params) {
+    validator(function() use (&$params, &$obj) {
       Validator::need($params, 'id', 'ID')->isVarchar(190);
       Validator::need($params, 'model', 'Model')->isVarchar(190);
       Validator::need($params, 'en', '英文')->isText();
       Validator::need($params, 'ch', '中文')->isText();
 
-      $params['en'] = urldecode($params['en']);
-      $params['ch'] = urldecode($params['ch']);
       $params['model'] = urldecode($params['model']);
+      if (!$obj = $params['model']::one('id = ?', $params['id']))
+        error('找不到此卡片資料');
+
+      $params['en'] = $obj->en;
+      $params['ch'] = $obj->ch;
     });
 
     $asset = Asset::create()
