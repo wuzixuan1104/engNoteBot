@@ -11,4 +11,8 @@ class Postback {
 
     return $obj->delete() ? Msg::text()->text('刪除成功！') : Msg::text()->text('刪除失敗！');
   }
+
+  public static function cardExample($model, $id) {
+
+  }
 }
